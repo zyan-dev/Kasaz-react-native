@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import RNPickerSelect, {Item} from 'react-native-picker-select';
-import {Picker} from '@react-native-picker/picker';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
+import { Picker } from '@react-native-picker/picker';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {dySize} from '../../../utils/responsive';
-import {FilterParams} from '../../../redux/home/actions';
+import { dySize } from '../../../utils/responsive';
+import { FilterParams } from '../../../redux/home/actions';
 import {
   priceOptions,
   sqmOptions,
@@ -14,7 +13,7 @@ import {
 } from '../../../utils/constants';
 import Button from '../../../components/Button';
 
-const customPickerStyles = StyleSheet.create({
+const customPickerStyles = {
   inputIOS: {
     fontSize: 18,
     paddingVertical: 10,
@@ -39,7 +38,7 @@ const customPickerStyles = StyleSheet.create({
     height: dySize(40),
     width: dySize(120),
   },
-});
+};
 
 interface FilterViewProps {
   visible: boolean;
@@ -67,11 +66,11 @@ const ApartmentFilterView: React.FC<FilterViewProps> = ({
     <View style={styles.container}>
       <Text style={styles.sectionTitle}>Price (€)</Text>
       <View style={styles.sectionView}>
-        <View style={[styles.sectionView, {width: dySize(120)}]}>
+        <View style={[styles.sectionView, { width: dySize(120) }]}>
           <RNPickerSelect
             onValueChange={setMinPrice}
             value={minPrice}
-            placeholder={{label: 'Min', value: 0}}
+            placeholder={{ label: 'Min', value: 0 }}
             useNativeAndroidPickerStyle={false}
             items={priceOptions}
             style={customPickerStyles}
@@ -83,13 +82,13 @@ const ApartmentFilterView: React.FC<FilterViewProps> = ({
           />
         </View>
         <Text style={styles.sectionTitle}>-</Text>
-        <View style={[styles.sectionView, {width: dySize(120)}]}>
+        <View style={[styles.sectionView, { width: dySize(120) }]}>
           <RNPickerSelect
             onValueChange={setMaxPrice}
             value={maxPrice}
-            placeholder={{label: 'Max', value: MAX_PRICE}}
+            placeholder={{ label: 'Max', value: MAX_PRICE }}
             useNativeAndroidPickerStyle={false}
-            items={priceOptions.filter((i: Item) => i.value > minPrice)}
+            items={priceOptions.filter((i: any) => i.value > minPrice)}
             style={customPickerStyles}
             Icon={() => (
               <View style={styles.dropdownIconView}>
@@ -101,11 +100,11 @@ const ApartmentFilterView: React.FC<FilterViewProps> = ({
       </View>
       <Text style={styles.sectionTitle}>Square (m²)</Text>
       <View style={styles.sectionView}>
-        <View style={[styles.sectionView, {width: dySize(120)}]}>
+        <View style={[styles.sectionView, { width: dySize(120) }]}>
           <RNPickerSelect
             onValueChange={setMinSquare}
             value={minSquare}
-            placeholder={{label: 'Min', value: 0}}
+            placeholder={{ label: 'Min', value: 0 }}
             useNativeAndroidPickerStyle={false}
             items={sqmOptions}
             style={customPickerStyles}
@@ -117,13 +116,13 @@ const ApartmentFilterView: React.FC<FilterViewProps> = ({
           />
         </View>
         <Text style={styles.sectionTitle}>-</Text>
-        <View style={[styles.sectionView, {width: dySize(120)}]}>
+        <View style={[styles.sectionView, { width: dySize(120) }]}>
           <RNPickerSelect
             onValueChange={setMaxSquare}
             value={maxSquare}
-            placeholder={{label: 'Max', value: MAX_SQUARE}}
+            placeholder={{ label: 'Max', value: MAX_SQUARE }}
             useNativeAndroidPickerStyle={false}
-            items={sqmOptions.filter((i: Item) => i.value > (minSquare || 0))}
+            items={sqmOptions.filter((i: any) => i.value > (minSquare || 0))}
             style={customPickerStyles}
             Icon={() => (
               <View style={styles.dropdownIconView}>
@@ -136,10 +135,9 @@ const ApartmentFilterView: React.FC<FilterViewProps> = ({
       <Text style={styles.sectionTitle}>Bedrooms</Text>
       <Picker
         selectedValue={bedrooms}
-        style={{height: dySize(150), width: dySize(120)}}
-        onValueChange={(itemValue, itemIndex) =>
-          setBedrooms(Number(itemValue))
-        }>
+        style={{ height: dySize(150), width: dySize(120) }}
+        onValueChange={(itemValue, itemIndex) => setBedrooms(Number(itemValue))}
+      >
         <Picker.Item label="All" value={0} />
         <Picker.Item label="1+" value={1} />
         <Picker.Item label="2+" value={2} />
@@ -161,9 +159,6 @@ const styles = StyleSheet.create({
     fontSize: dySize(20),
     marginHorizontal: 10,
     height: dySize(24),
-  },
-  valueText: {
-    fontSize: dySize(18),
   },
   sectionView: {
     display: 'flex',

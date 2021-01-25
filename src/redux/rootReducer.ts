@@ -1,9 +1,8 @@
-import { combineReducers } from "redux";
-import thunk from 'redux-thunk';
-import homeReducer, { HomeState } from "./home/reducer";
+import { combineReducers } from 'redux';
+import homeReducer, { HomeState } from './home/reducer';
 
 export interface AppState {
-  home: HomeState
+  home: HomeState;
 }
 
 const rootReducer = combineReducers<AppState>({

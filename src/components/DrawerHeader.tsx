@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Image, StyleSheet, ViewPropTypes} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { View, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Logo} from '../assets/images/_index';
-import {dySize} from '../utils/responsive';
+import { Logo } from '../assets/images/_index';
+import { dySize } from '../utils/responsive';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +30,7 @@ interface DrawerHeaderProps {
   onPressHambuger: any;
 }
 
-const DrawerHeader: React.FC<DrawerHeaderProps> = ({onPressHambuger}) => {
+const DrawerHeader: React.FC<DrawerHeaderProps> = ({ onPressHambuger }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => onPressHambuger()}>

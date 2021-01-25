@@ -1,15 +1,19 @@
-import { HomeActionTypes, SEARCH_APARTMENT, SET_APARTMENT } from '../types/actions/home';
+import {
+  HomeActionTypes,
+  SEARCH_APARTMENT,
+  SET_APARTMENT,
+} from '../types/actions/home';
 import { Apartment } from '../types/Apartment';
 
-export type HomeState = {
-  apartments: Apartment[]
-  loading: boolean
+export interface HomeState {
+  apartments: Apartment[];
+  loading: boolean;
 }
 
 const InitialState = {
   apartments: [],
-  loading: false
-}
+  loading: false,
+};
 
 export default function homeReducer(
   state: HomeState = InitialState,
@@ -19,14 +23,14 @@ export default function homeReducer(
     case SEARCH_APARTMENT:
       return {
         ...state,
-        loading: true
-      }
+        loading: true,
+      };
     case SET_APARTMENT:
       return {
         ...state,
         loading: false,
-        apartments: action.payload
-      }
+        apartments: action.payload,
+      };
     default:
       return state;
   }

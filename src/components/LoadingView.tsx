@@ -1,7 +1,7 @@
 import React from 'react';
-import {ActivityIndicator, View, StyleSheet} from 'react-native';
+import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
-const Loader: React.FC<any> = ({props}) => {
+const Loader: React.FC<any> = ({ props }) => {
   return (
     <View style={styles.container}>
       <ActivityIndicator {...props} />

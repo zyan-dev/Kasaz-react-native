@@ -1,6 +1,5 @@
-import firestore from '@react-native-firebase/firestore';
 import { MAX_PRICE, MAX_SQUARE } from '../../utils/constants';
-import { SEARCH_APARTMENT, SET_APARTMENT } from "../types/actions/home"
+import { SEARCH_APARTMENT, SET_APARTMENT } from '../types/actions/home';
 
 export interface FilterParams {
   minPrice?: number;
@@ -10,17 +9,19 @@ export interface FilterParams {
   bedrooms?: number;
 }
 
-export const fetchApartmentsWithFilter = <FilterParams>(
+export const fetchApartmentsWithFilter = (
   minPrice = 0,
   maxPrice = MAX_PRICE,
   minSquare = 0,
   maxSquare = MAX_SQUARE,
-  bedrooms = 0) => {
-  return async (dispatch: any) => {
+  bedrooms = 0
+) => {
+  return (dispatch: any) => {
+    dispatch({ type: SEARCH_APARTMENT });
     fetch('http://localhost:3002/fetch', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -28,18 +29,18 @@ export const fetchApartmentsWithFilter = <FilterParams>(
         maxPrice,
         minSquare,
         maxSquare,
-        bedrooms
-      })
+        bedrooms,
+      }),
     })
       .then((res) => res.json())
-      .then(res => {
+      .then((res) => {
         dispatch({
           type: SET_APARTMENT,
           payload: res.result.map((i: any) => ({
             ...i,
-            images: JSON.parse(i.images)
-          }))
-        })
-      })
-  }
-}
+            images: JSON.parse(i.images),
+          })),
+        });
+      });
+  };
+};

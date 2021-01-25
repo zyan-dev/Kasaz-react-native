@@ -1,8 +1,7 @@
 import React from 'react';
-import {StyleSheet, View, TextInput} from 'react-native';
-import {onChange} from 'react-native-reanimated';
+import { StyleSheet, View, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {dySize} from '../utils/responsive';
+import { dySize } from '../utils/responsive';
 
 interface SearchInputProps {
   width?: number;
@@ -16,7 +15,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   onChange,
 }) => {
   return (
-    <View style={[styles.container, {width}]}>
+    <View style={[styles.container, { width }]}>
       <TextInput
         style={styles.input}
         onChangeText={onChange}

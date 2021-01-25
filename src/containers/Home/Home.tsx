@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -7,23 +7,27 @@ import {
   Modal,
   Animated,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import DrawerHeader from '../../components/DrawerHeader';
 import SearchInput from '../../components/SearchInput';
-import {fetchApartmentsWithFilter} from '../../redux/home/actions';
-import {AppState} from '../../redux/rootReducer';
-import {dySize} from '../../utils/responsive';
-import {Apartment} from '../../redux/types/Apartment';
+import { fetchApartmentsWithFilter } from '../../redux/home/actions';
+import { AppState } from '../../redux/rootReducer';
+import { dySize } from '../../utils/responsive';
+import { Apartment } from '../../redux/types/Apartment';
 import ApartmentItemView from './components/ApartmentItemView';
 import ApartmentFilterView from './components/ApartmentFilter';
 
 const FILTER_VIEW_HEIGHT = dySize(450);
 
-const HomeScreen = (props: any) => {
+interface HomeScreenProps {
+  navigation: any;
+}
+
+const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [filterOpended, showFilter] = useState(false);
   const [filterParams, setFilterParams] = useState({});
   const [searchText, setSearchText] = useState('');
@@ -31,7 +35,7 @@ const HomeScreen = (props: any) => {
   const filterViewHeight = new Animated.Value(0);
 
   const dispatch = useDispatch();
-  const {loading, apartments} = useSelector((state: AppState) => state.home);
+  const { loading, apartments } = useSelector((state: AppState) => state.home);
 
   useEffect(() => {
     dispatch(
@@ -40,8 +44,8 @@ const HomeScreen = (props: any) => {
         undefined,
         undefined,
         undefined,
-        undefined,
-      ),
+        undefined
+      )
     );
   }, []);
 
@@ -78,22 +82,22 @@ const HomeScreen = (props: any) => {
     maxPrice: number,
     minSquare: number,
     maxSquare: number,
-    bedrooms: number,
+    bedrooms: number
   ) => {
-    setFilterParams({minPrice, maxPrice, minSquare, maxSquare, bedrooms});
+    setFilterParams({ minPrice, maxPrice, minSquare, maxSquare, bedrooms });
     dispatch(
       fetchApartmentsWithFilter(
         minPrice,
         maxPrice,
         minSquare,
         maxSquare,
-        bedrooms,
-      ),
+        bedrooms
+      )
     );
     showFilter(false);
   };
 
-  const renderApartmentItem = ({item}: {item: Apartment}) => {
+  const renderApartmentItem = ({ item }: { item: Apartment }) => {
     return (
       <ApartmentItemView
         data={item}
@@ -104,8 +108,8 @@ const HomeScreen = (props: any) => {
   };
 
   return (
-    <View style={{flex: 1}}>
-      <DrawerHeader onPressHambuger={() => props.navigation.openDrawer()} />
+    <View style={{ flex: 1 }}>
+      <DrawerHeader onPressHambuger={() => navigation.openDrawer()} />
       <View style={styles.searchView}>
         <SearchInput
           width={dySize(250)}
@@ -131,7 +135,9 @@ const HomeScreen = (props: any) => {
             )}
           </View>
         </TouchableOpacity>
-        <Animated.View style={[styles.filterView, {height: filterViewHeight}]}>
+        <Animated.View
+          style={[styles.filterView, { height: filterViewHeight }]}
+        >
           <ApartmentFilterView
             params={filterParams}
             visible={filterOpended}
@@ -141,14 +147,14 @@ const HomeScreen = (props: any) => {
       </View>
       <FlatList
         data={apartments.filter((i: Apartment) =>
-          i.title.toLowerCase().includes(searchText.toLowerCase()),
+          i.title.toLowerCase().includes(searchText.toLowerCase())
         )}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderApartmentItem}
         contentContainerStyle={{
           paddingBottom: dySize(100),
         }}
-        style={{backgroundColor: 'lightgray'}}
+        style={{ backgroundColor: 'lightgray' }}
         ListEmptyComponent={() => (
           <Text style={styles.emptyText}>No results</Text>
         )}
@@ -157,7 +163,7 @@ const HomeScreen = (props: any) => {
             <ActivityIndicator
               size="small"
               color="#00ff00"
-              style={{marginTop: 20}}
+              style={{ marginTop: 20 }}
             />
           ) : null;
         }}
@@ -166,11 +172,11 @@ const HomeScreen = (props: any) => {
         <Modal visible transparent animationType="slide">
           <View style={styles.modalContainer}>
             <ImageViewer
-              imageUrls={previewItem.images.map((i: string) => ({url: i}))}
+              imageUrls={previewItem.images.map((i: string) => ({ url: i }))}
               onCancel={() => setPreviewItem(null)}
               enablePreload
               loadingRender={() => (
-                <Text style={{color: 'white'}}>Loading...</Text>
+                <Text style={{ color: 'white' }}>Loading...</Text>
               )}
             />
             <View style={styles.closeView}>

@@ -5,7 +5,7 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 
-const HomeDrawer = (props: DrawerContentComponentProps) => {
+const HomeDrawer: React.FC<DrawerContentComponentProps> = (props) => {
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItem label="Home" onPress={() => props.navigation.closeDrawer()} />

@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {dySize} from '../utils/responsive';
+import { StyleSheet, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { dySize } from '../utils/responsive';
 
 interface ButtonProps {
   title: string;
@@ -26,11 +26,13 @@ const Button: React.FC<ButtonProps> = ({
       style={{
         backgroundColor: btnColor,
         height,
+        width,
         borderRadius: 4,
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: 15,
-      }}>
+      }}
+    >
       <Text style={[styles.button, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
