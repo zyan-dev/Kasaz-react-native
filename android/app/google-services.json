@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "354172516492",
+    "project_id": "kasaztest",
+    "storage_bucket": "kasaztest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354172516492:android:ba4c6700de0fc3bf2b23a9",
+        "android_client_info": {
+          "package_name": "com.kasaz.tian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354172516492-m4n6t711l8qdn0gb3c3e951ls67cefo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlmVFmPZCZoUVrQwT_UxMNFT3__xE3Kl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354172516492-m4n6t711l8qdn0gb3c3e951ls67cefo1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
