@@ -10,6 +10,7 @@ interface ButtonProps {
   width?: number;
   textStyle?: any;
   onPress: any;
+  testID?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,9 +20,11 @@ const Button: React.FC<ButtonProps> = ({
   height = dySize(40),
   textStyle = {},
   onPress,
+  testID = '',
 }) => {
   return (
     <TouchableOpacity
+      testID={testID}
       onPress={onPress}
       style={{
         backgroundColor: btnColor,

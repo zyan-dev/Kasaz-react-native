@@ -38,7 +38,7 @@ const ApartmentItemView: React.FC<ApartmentItemViewProps> = ({
         }
       >
         {data.images.map((image: string) => (
-          <View style={styles.apartmentImage} key={image}>
+          <View style={styles.apartmentImage} key={image} testID={image}>
             <FastImage
               style={styles.apartmentImage}
               source={{
@@ -131,12 +131,14 @@ const styles = StyleSheet.create({
   divider: {
     height: dySize(30),
     width: 1,
+    marginHorizontal: dySize(20),
     backgroundColor: 'black',
   },
   infoText: {
     fontSize: dySize(18),
   },
   infoItem: {
+    flex: 1,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

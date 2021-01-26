@@ -43,13 +43,16 @@ const customPickerStyles = {
 interface FilterViewProps {
   visible: boolean;
   onSubmit: any;
-  params: FilterParams;
+  params?: FilterParams;
+  props?: any;
+  testID?: string;
 }
 
 const ApartmentFilterView: React.FC<FilterViewProps> = ({
   visible,
   onSubmit,
-  params,
+  params = {},
+  testID = '',
 }) => {
   const [minPrice, setMinPrice] = useState(params.minPrice || 0);
   const [maxPrice, setMaxPrice] = useState(params.maxPrice || MAX_PRICE);
@@ -63,7 +66,7 @@ const ApartmentFilterView: React.FC<FilterViewProps> = ({
 
   if (!visible) return null;
   return (
-    <View style={styles.container}>
+    <View testID={testID} style={styles.container}>
       <Text style={styles.sectionTitle}>Price (€)</Text>
       <View style={styles.sectionView}>
         <View style={[styles.sectionView, { width: dySize(120) }]}>

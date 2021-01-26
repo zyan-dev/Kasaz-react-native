@@ -116,7 +116,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
           onChange={onChangeSearchText}
           placeholder="Search By Name"
         />
-        <TouchableOpacity onPress={onPressFilter}>
+        <TouchableOpacity onPress={onPressFilter} testID="FilterButton">
           <View style={styles.filterButton}>
             <Text style={styles.filterText}>Filters</Text>
             {filterOpended && (
@@ -139,6 +139,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
           style={[styles.filterView, { height: filterViewHeight }]}
         >
           <ApartmentFilterView
+            testID="FilterView"
             params={filterParams}
             visible={filterOpended}
             onSubmit={onSubmitFilter}
