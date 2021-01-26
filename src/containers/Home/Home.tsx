@@ -20,6 +20,7 @@ import { dySize } from '../../utils/responsive';
 import { Apartment } from '../../redux/types/Apartment';
 import ApartmentItemView from './components/ApartmentItemView';
 import ApartmentFilterView from './components/ApartmentFilter';
+import { MAX_PRICE, MAX_SQUARE } from '../../utils/constants';
 
 const FILTER_VIEW_HEIGHT = dySize(450);
 
@@ -39,13 +40,13 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
   useEffect(() => {
     dispatch(
-      fetchApartmentsWithFilter(
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined
-      )
+      fetchApartmentsWithFilter({
+        minPrice: 0,
+        maxPrice: MAX_PRICE,
+        minSquare: 0,
+        maxSquare: MAX_SQUARE,
+        bedrooms: 0,
+      })
     );
   }, []);
 
@@ -86,13 +87,13 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   ) => {
     setFilterParams({ minPrice, maxPrice, minSquare, maxSquare, bedrooms });
     dispatch(
-      fetchApartmentsWithFilter(
+      fetchApartmentsWithFilter({
         minPrice,
         maxPrice,
         minSquare,
         maxSquare,
-        bedrooms
-      )
+        bedrooms,
+      })
     );
     showFilter(false);
   };

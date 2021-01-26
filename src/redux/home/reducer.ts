@@ -2,6 +2,7 @@ import {
   HomeActionTypes,
   SEARCH_APARTMENT,
   SET_APARTMENT,
+  FETCH_APARTMENT_FAILED,
 } from '../types/actions/home';
 import { Apartment } from '../types/Apartment';
 
@@ -30,6 +31,11 @@ export default function homeReducer(
         ...state,
         loading: false,
         apartments: action.payload,
+      };
+    case FETCH_APARTMENT_FAILED:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;
