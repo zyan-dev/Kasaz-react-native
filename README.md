@@ -1,6 +1,8 @@
 # kasaz-react-native
 
-## A simple mobile app to search for apartments using `react-native` `redux` `react-navigation` `Typescript` `Node.js` `MySQL` `eslint`.
+## A simple mobile app to search for apartments
+
+### `react-native` `redux` `react-navigation` `Typescript` `Node.js` `MySQL` `eslint`
 
 - Functions
 
@@ -10,12 +12,32 @@
   - Preview apartment picture(s)
   - Used `@testing-library/react-native` for Unit Test
 
-## Installation and Test
+## Installation
+
+- In project folder
 
 ```
-- run yarn
-- cd ios && pod install
+- yarn
+```
+
+```
+- cd ios && pod update && cd ..
+```
+
+```
 - yarn dev (start server for React Native and Node)
+```
+
+- In another terminate
+
+```
 - yarn ios
+```
+
+## Test
+
+- In project folder
+
+```
 - yarn test (Unit Test)
 ```
