@@ -13,9 +13,9 @@ const corsOptions = {
 
 let con = mysql.createConnection({
   host: 'sql12.freemysqlhosting.net',
-  user: 'sql12388881',
-  password: 'JX1XkunMv8',
-  database: 'sql12388881',
+  user: 'sql12390269',
+  password: 'i4tYnpuiUT',
+  database: 'sql12390269',
 });
 
 con.connect((err) => {
