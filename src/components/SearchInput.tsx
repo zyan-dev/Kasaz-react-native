@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 12,
     fontSize: 20,
+    padding: 0,
   },
   searchIcon: {
     color: 'white',

@@ -18,6 +18,14 @@ let con = mysql.createConnection({
   database: 'sql12390269',
 });
 
+// Another account
+// {
+//   host: 'sql12.freemysqlhosting.net',
+//   user: 'sql12391561',
+//   password: 'xhTDDTFgbt',
+//   database: 'sql12391561',
+// }
+
 con.connect((err) => {
   if (err) {
     console.log('MySQL connection Error', err);

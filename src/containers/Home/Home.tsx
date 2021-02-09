@@ -136,17 +136,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             )}
           </View>
         </TouchableOpacity>
-        <Animated.View
-          style={[styles.filterView, { height: filterViewHeight }]}
-        >
-          <ApartmentFilterView
-            testID="FilterView"
-            params={filterParams}
-            visible={filterOpended}
-            onSubmit={onSubmitFilter}
-          />
-        </Animated.View>
       </View>
+      <Animated.View style={[styles.filterView, { height: filterViewHeight }]}>
+        <ApartmentFilterView
+          testID="FilterView"
+          params={filterParams}
+          visible={filterOpended}
+          onSubmit={onSubmitFilter}
+        />
+      </Animated.View>
       <FlatList
         data={apartments.filter((i: Apartment) =>
           i.title.toLowerCase().includes(searchText.toLowerCase())
@@ -228,12 +226,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   filterView: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: dySize(70),
     backgroundColor: 'white',
-    zIndex: -1,
   },
   emptyText: {
     color: 'gray',
